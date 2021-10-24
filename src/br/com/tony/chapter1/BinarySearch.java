@@ -30,7 +30,8 @@ public class BinarySearch {
         while (low <= high) {
             numIteracoes++;
 
-            //  Meio da lista: Por exemplo, lista de 10 elementos o primeiro elementInTheMidPosition será no índice 5
+            //  Meio da lista: Por exemplo, lista de 10 elementos o primeiro
+            //  elementInTheMidPosition será no índice 5
             var mid = (low + high) / 2;
 
             //  Começamos a busca pela metade da lista, portanto pegamos o elemento da posição mid do array
