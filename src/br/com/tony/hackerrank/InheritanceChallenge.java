@@ -1,4 +1,4 @@
-package br.com.tony.chapter1.hackerrank;
+package br.com.tony.hackerrank;
 
 import java.util.Arrays;
 

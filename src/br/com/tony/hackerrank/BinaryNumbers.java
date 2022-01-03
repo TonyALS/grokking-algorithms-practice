@@ -1,4 +1,4 @@
-package br.com.tony.chapter1.hackerrank;
+package br.com.tony.hackerrank;
 
 /**
 * Link do desafio: https://www.hackerrank.com/challenges/30-binary-numbers/problem?isFullScreen=true
