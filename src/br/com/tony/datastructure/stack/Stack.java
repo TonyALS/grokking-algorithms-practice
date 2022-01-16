@@ -39,13 +39,8 @@ public class Stack<E> {
         if (isFull()) {
             throw new IllegalArgumentException(FULL_STACK_ERROR);
         }
-        for (int i = 0; i < VECTOR.length; i++) {
-            if (VECTOR[i] == null) {
-                VECTOR[i] = element;
-                length++;
-                break;
-            }
-        }
+        VECTOR[length] = element;
+        length++;
     }
 
     public E pop() {
