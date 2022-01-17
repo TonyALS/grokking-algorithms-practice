@@ -15,8 +15,8 @@ public class Queue<E> {
     private static final String PRIMITIVE_NOT_ALLOWED = "Não é possível criar a fila com tipos primitivos";
     private static final int MAXIMUM_LENGTH = 5;
     private static final int INITIAL_LENGTH = 0;
-    private int lastElement = INITIAL_LENGTH;
-    private int firstElement = INITIAL_LENGTH;
+    private int countPush = INITIAL_LENGTH;
+    private int countPop = INITIAL_LENGTH;
     private final E[] QUEUE;
 
     @SuppressWarnings("unchecked")
@@ -29,85 +29,77 @@ public class Queue<E> {
 
     /**
      * Lógica de adição:
-     * O índice da adição é o resto da divisão do LAST_ELEMENT por MAXIMUM_LENGTH.
+     * O índice da adição é o resto da divisão do countPush por MAXIMUM_LENGTH.
      * Exemplo:
-     * Dado que LAST_ELEMENT é 0 e o MAXIMUM_LENGTH é 5, o resto da divisão de 0 por 5 é 0,
-     * portanto, adiciona o conteúdo no índice 0 e incremente LAST_ELEMENT em 1.
-     * Depois, Dado que LAST_ELEMENT é 1 e o MAXIMUM_LENGTH é 5, o resto da divisão de 1 por 5 é 1,
-     * portanto, adiciona o conteúdo no índice 1 e incremente LAST_ELEMENT em 1 e assim por diante.
+     * Dado que countPush é 0 e o MAXIMUM_LENGTH é 5, o resto da divisão de 0 por 5 é 0,
+     * portanto, adiciona o conteúdo no índice 0 e incremente countPush em 1.
+     * Depois, Dado que countPush é 1 e o MAXIMUM_LENGTH é 5, o resto da divisão de 1 por 5 é 1,
+     * portanto, adiciona o conteúdo no índice 1 e incremente countPush em 1 e assim por diante.
      * */
     public void push(E element) {
         if (isFull()) {
             throw new IllegalArgumentException(FULL_STACK_ERROR);
         }
-        int index = lastElement % MAXIMUM_LENGTH;
-        QUEUE[index] = element;
-        lastElement++;
+        int lastElement = countPush % MAXIMUM_LENGTH;
+        QUEUE[lastElement] = element;
+        countPush++;
     }
 
     /**
      * Lógica de remoção:
-     * O índice da remoção é o resto da divisão do FIRST_ELEMENT por MAXIMUM_LENGTH.
+     * O índice da remoção é o resto da divisão do countPop por MAXIMUM_LENGTH.
      * Exemplo:
-     * Dado que FIRST_ELEMENT é 0 e o MAXIMUM_LENGTH é 5, o resto da divisão de 0 por 5 é 0,
-     * portanto, remove o conteúdo do índice 0 e incremente FIRST_ELEMENT em 1.
-     * Em seguida, dado que FIRST_ELEMENT é 1 e o MAXIMUM_LENGTH é 5, o resto da divisão de 1 por 5 é 1,
-     * portanto, remove o conteúdo do índice 1 e incrementa FIRST_ELEMENT em 1.
-     *
-     * Mas porque usar o resto da divisão e nao a própria variável contadora?
-     * Suponha que a fila esteja cheia com 5 itens. Ao remover um item, fica um espaço vazio
+     * Dado que countPop é 0 e o MAXIMUM_LENGTH é 5, o resto da divisão de 0 por 5 é 0,
+     * portanto, remove o conteúdo do índice 0 e incremente countPop em 1.
+     * Em seguida, dado que countPop é 1 e o MAXIMUM_LENGTH é 5, o resto da divisão de 1 por 5 é 1,
+     * portanto, remove o conteúdo do índice 1 e incrementa countPop em 1.
      * */
     public E pop() {
         if (isEmpty()) {
             throw new IllegalArgumentException(REMOVE_ITEM_ERROR);
         }
-        int index = firstElement % MAXIMUM_LENGTH;
-        E removed = QUEUE[index];
-        QUEUE[index] = null;
-        firstElement++;
+        int firstElement = countPop % MAXIMUM_LENGTH;
+        E removed = QUEUE[firstElement];
+        QUEUE[firstElement] = null;
+        countPop++;
         return removed;
     }
 
     @Override
     public String toString() {
-        return "Queue{" +
-                "lastElement=" + lastElement +
-                ", firstElement=" + firstElement +
-                ", queue=" + Arrays.toString(QUEUE) +
-                '}';
+        return "Queue{" + Arrays.toString(QUEUE) + "}";
     }
 
     /**
-     * Se o contador do primeiro e do último elementos forem iguais, quer dizer que a fila está
+     * Se o contador do countPop e do countPush forem iguais, quer dizer que a fila está
      * vazia.
      * Exemplo:
-     * FIRST_ELEMENT == 0
-     * LAST_ELEMENT == 0
+     * countPop == 0
+     * countPush == 0
      * Ou ainda:
-     * FIRST_ELEMENT == 5
-     * LAST_ELEMENT == 5
-     * Motivo: toda vez que adiciono um elemento o LAST_ELEMENT incrementa em 1 e toda vez que
-     * removo um elemento o FIRST_ELEMENT incrementa em 1, logo, se os dois valores forem iguais
+     * countPop == 5
+     * countPush == 5
+     * Motivo: toda vez que adiciono um elemento o countPush incrementa em 1 e toda vez que
+     * removo um elemento o countPop incrementa em 1, logo, se os dois valores forem iguais
      * quer dizer que removi a mesma quantidade de elementos que adicionei.
      * */
     private boolean isEmpty() {
-        return firstElement == lastElement;
+        return countPop == countPush;
     }
 
-
     /**
-     * Se o contador do LAST_ELEMENT - FIRST_ELEMENT for igual MAXIMUM_LENGTH quer dizer que a fila
+     * Se (countPush - countPop) for igual MAXIMUM_LENGTH quer dizer que a fila
      * está cheia.
      * Exemplo:
-     * LAST_ELEMENT == 5
-     * FIRST_ELEMENT == 0
+     * countPush == 5
+     * countPop == 0
      * Motivo:
-     * O contador do FIRST_ELEMENT só é incrementado caso eu remova algum item da fila, ao passo que
-     * o contador LAST_ELEMENT é incrementado sempre que adiciono um novo item à fila. Logo,
+     * O contador do countPop só é incrementado caso eu remova algum item da fila, ao passo que
+     * o contador countPush é incrementado sempre que adiciono um novo item à fila. Logo,
      * se a relação entre adicionados e removidos for igual ao tamanho máximo, quer dizer que
      * tenho que remover um item para conseguir adicionar outro.
      * */
     private boolean isFull() {
-        return (lastElement - firstElement) == MAXIMUM_LENGTH;
+        return (countPush - countPop) == MAXIMUM_LENGTH;
     }
 }
