@@ -30,14 +30,14 @@ public class DiagonalDifference {
         /*
         * LeftDiagonal: 0,0 1,1 2,2
         * */
-        var leftDiagonalSum = 0;
+        int leftDiagonalSum = 0;
         for (int i = 0; i < arr.size(); i++) {
             leftDiagonalSum = leftDiagonalSum + arr.get(i).get(i);
         }
 
         // RightDiagonal: 0,2 1,1 2,0
-        var rightDiagonalSum = 0;
-        var size = arr.size();
+        int rightDiagonalSum = 0;
+        int size = arr.size();
         for (List<Integer> integerList : arr) {
             rightDiagonalSum = rightDiagonalSum + integerList.get(size - 1);
             size--;
