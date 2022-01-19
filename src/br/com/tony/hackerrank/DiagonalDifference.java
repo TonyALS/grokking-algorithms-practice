@@ -38,8 +38,9 @@ public class DiagonalDifference {
         // RightDiagonal: 0,2 1,1 2,0
         int rightDiagonalSum = 0;
         int size = arr.size();
-        for (List<Integer> integerList : arr) {
-            rightDiagonalSum = rightDiagonalSum + integerList.get(size - 1);
+
+        for (int i = 0; i < arr.size(); i++) {
+            rightDiagonalSum = rightDiagonalSum + arr.get(i).get(size - 1);
             size--;
         }
 
