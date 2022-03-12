@@ -1,4 +1,4 @@
-package br.com.tony.chapter1;
+package br.com.tony.chapter1.sort;
 
 import java.util.Arrays;
 

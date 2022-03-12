@@ -1,4 +1,4 @@
-package br.com.tony.chapter1;
+package br.com.tony.chapter1.search;
 
 /**
  * Na busca binária os elementos do array devem estar ordenados.
