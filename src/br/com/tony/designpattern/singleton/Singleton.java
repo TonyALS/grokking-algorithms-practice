@@ -1,4 +1,4 @@
-package br.com.tony.designpattern;
+package br.com.tony.designpattern.singleton;
 
 import java.util.Objects;
 

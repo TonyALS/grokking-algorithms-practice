@@ -1,4 +1,4 @@
-package br.com.tony.designpattern;
+package br.com.tony.designpattern.singleton;
 
 public class SingletonMain {
     public static void main(String[] args) {
