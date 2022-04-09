@@ -1,4 +1,4 @@
-package br.com.tony.designpattern.strategy;
+package br.com.tony.designpattern.behavioral.strategy;
 
 /**
  * Padrao strategy
