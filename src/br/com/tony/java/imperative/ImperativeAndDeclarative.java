@@ -1,11 +1,11 @@
-package br.com.tony.java.functional.imperative;
+package br.com.tony.java.imperative;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static br.com.tony.java.functional.imperative.ImperativeAndDeclarative.Gender.FEMALE;
-import static br.com.tony.java.functional.imperative.ImperativeAndDeclarative.Gender.MALE;
+import static br.com.tony.java.imperative.ImperativeAndDeclarative.Gender.FEMALE;
+import static br.com.tony.java.imperative.ImperativeAndDeclarative.Gender.MALE;
 
 public class ImperativeAndDeclarative {
     public static void main(String[] args) {

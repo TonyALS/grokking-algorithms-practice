@@ -1,4 +1,4 @@
-package br.com.tony.java.functional.funcationalinterface;
+package br.com.tony.java.funcationalinterface;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
