@@ -3,6 +3,7 @@ package br.com.tony.hackerrank;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Predicate;
 
 /**
  * https://www.hackerrank.com/challenges/plus-minus/problem?isFullScreen=true
@@ -16,16 +17,20 @@ public class PlusMinus {
     public static void plusMinus(List<Integer> arr) {
         Double listSize = (double) arr.size();
 
+        Predicate<Integer> isGreaterThanZero = num -> num > 0;
+        Predicate<Integer> isLessThanZero = num -> num < 0;
+        Predicate<Integer> isEqualZero = num -> num == 0;
+
         Double numOfPositiveNumbers = (double) arr.stream()
-                .filter(positive -> positive > 0)
+                .filter(isGreaterThanZero)
                 .count();
 
         Double numOfNegativeNumbers = (double) arr.stream()
-                .filter(negative -> negative < 0)
+                .filter(isLessThanZero)
                 .count();
 
         Double numOfZeros = (double) arr.stream()
-                .filter(zero -> zero == 0)
+                .filter(isEqualZero)
                 .count();
 
         String positiveProp = String
