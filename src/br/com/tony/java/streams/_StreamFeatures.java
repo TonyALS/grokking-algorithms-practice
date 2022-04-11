@@ -65,6 +65,13 @@ public class _StreamFeatures {
                 .map(Person::getGender)
                 .collect(Collectors.toSet())
                 .forEach(System.out::println);
+
+        //  Declarative approach - AVERAGE
+        System.out.println("--- Declarative Approach - AVERAGE(by age) ----");
+        peoples.stream()
+                .mapToInt(Person::getAge)
+                .average()
+                .ifPresent(System.out::println);
     }
 
     private static List<Person> getPeople() {
